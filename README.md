@@ -83,9 +83,7 @@ Visualization results:
 
 ---
 
-### 3. Traversable Space Construction Visualization
-
-Final traversable space visualization:
+### 3. Visualization of traversable space.
 
 ![Figure 7: Drivable space](./figures/fig7.png)
 
