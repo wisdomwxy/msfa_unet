@@ -1,0 +1,15 @@
+# pip install -r requirements.txt
+# PyTorch: prefer matching CUDA build from https://pytorch.org if you use GPU; otherwise pip torch is fine.
+
+torch>=1.9.0
+numpy>=1.19.0
+opencv-python>=4.5.0
+Pillow>=8.0.0
+timm>=0.6.0
+matplotlib>=3.3.0
+scipy>=1.6.0
+tqdm>=4.60.0
+tensorboard>=2.4.0
+pandas>=1.2.0
+openpyxl>=3.0.0
+open3d>=0.13.0

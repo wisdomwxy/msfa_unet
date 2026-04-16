@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+out/
+*.pcd
+
+# 大权重可不提交，改用 Git LFS 或自行放置
+# weights/*.pth
