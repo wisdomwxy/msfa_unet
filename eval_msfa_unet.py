@@ -26,11 +26,11 @@ def main():
     log_dir = "eval_logs"
     os.makedirs(log_dir, exist_ok=True)
 
-    val_txt = os.path.join(
-        EvalConfig.VOCdevkit_path, "VOC2007/val.txt"
+    test_txt = os.path.join(
+        EvalConfig.VOCdevkit_path, "VOC2007/test.txt"
     )
-    with open(val_txt, "r") as f:
-        val_lines = [line.strip() for line in f.readlines()]
+    with open(test_txt, "r") as f:
+        test_lines = [line.strip() for line in f.readlines()]
 
     device = torch.device(
         "cuda" if torch.cuda.is_available() and EvalConfig.cuda else "cpu"

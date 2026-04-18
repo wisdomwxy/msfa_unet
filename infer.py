@@ -1,6 +1,6 @@
 """
-图像 -> 语义分割类别图 (H,W) uint8，值域 0..num_classes-1。
-预处理与 genPhotos.process_image + predict 一致。
+Image -> Semantic segmentation class map (H, W) uint8, 
+with values ranging from 0 to num_classes-1.
 """
 import numpy as np
 import torch

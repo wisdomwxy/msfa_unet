@@ -128,13 +128,13 @@ Outputs three types of results:
 **VOC-style input:**
 
 ```powershell
-python gen_seg_outputs.py --read-mode val_txt --val-txt path/to/val.txt --jpeg-dir path/to/JPEGImages --out-dir out --model path/to/weights.pth
+python gen_seg_outputs.py --read-mode test_txt --test-txt path/to/test.txt --jpeg-dir path/to/JPEGImages --out-dir out --model path/to/weights.pth
 ```
 
 Example:
 
 ```powershell
-python gen_seg_outputs.py --read-mode val_txt --val-txt ./dataset/VOC2007/val.txt --jpeg-dir ./dataset/VOC2007/JPEGImages --out-dir out --model ./weights/best.pth
+python gen_seg_outputs.py --read-mode test_txt --test-txt ./dataset/VOC2007/test.txt --jpeg-dir ./dataset/VOC2007/JPEGImages --out-dir out --model ./weights/best.pth
 ```
 
 ---
@@ -150,7 +150,7 @@ Dataset structure:
 ```
 dataset/
   VOC2007/
-    val.txt
+    test.txt
     JPEGImages/
     SegmentationClass/
 ```
