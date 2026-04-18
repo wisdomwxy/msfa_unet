@@ -42,16 +42,16 @@ def calculate_metrics(pr, gt, num_classes):
     return IoU, mean_IoU, accuracy, confusion_matrix
 
 
-def get_image_list(read_mode, folder, val_txt, jpeg_dir):
+def get_image_list(read_mode, folder, test_txt, jpeg_dir):
     items = []
     if read_mode == "folder":
         for fname in sorted(os.listdir(folder)):
             if fname.lower().endswith((".png", ".jpg", ".jpeg")):
                 items.append((os.path.join(folder, fname), os.path.splitext(fname)[0]))
-    elif read_mode == "val_txt":
-        if not os.path.exists(val_txt):
-            raise FileNotFoundError(val_txt)
-        with open(val_txt, "r", encoding="utf-8") as f:
+    elif read_mode == "test_txt":
+        if not os.path.exists(test_txt):
+            raise FileNotFoundError(test_txt)
+        with open(test_txt, "r", encoding="utf-8") as f:
             names = [line.strip() for line in f if line.strip()]
         for name in names:
             found = False
@@ -80,23 +80,23 @@ def parse_args():
     )
     p.add_argument(
         "--read-mode",
-        choices=["folder", "val_txt", "single"],
-        default="val_txt",
-        help="folder | val_txt | single (requires --image)",
+        choices=["folder", "test_txt", "single"],
+        default="test_txt",
+        help="folder | test_txt | single (requires --image)",
     )
     p.add_argument("--image", default=None, help="Image path for read-mode single")
     p.add_argument("--folder", default=None, help="Image folder for read-mode folder")
     p.add_argument(
-        "--val-txt",
-        default=r"C:\workspace\unet\CMAT1200_mix\VOC2007\ImageSets\Segmentation\val.txt",
-        dest="val_txt",
-        help="val list (one basename per line) for val_txt mode",
+        "--test-txt",
+        default=r"C:\workspace\unet\CMAT1200_mix\VOC2007\ImageSets\Segmentation\test.txt",
+        dest="test_txt",
+        help="test list (one basename per line) for test_txt mode",
     )
     p.add_argument(
         "--jpeg-dir",
         default=r"C:\workspace\unet\CMAT1200_mix\VOC2007\JPEGImages",
         dest="jpeg_dir",
-        help="JPEGImages directory for val_txt mode",
+        help="JPEGImages directory for test_txt mode",
     )
     p.add_argument(
         "--out-dir",
@@ -154,10 +154,10 @@ def main():
             sys.exit(1)
         image_items = get_image_list("folder", args.folder, None, None)
     else:
-        if not args.val_txt or not args.jpeg_dir:
-            print("Error: val_txt mode needs --val-txt and --jpeg-dir", file=sys.stderr)
+        if not args.test_txt or not args.jpeg_dir:
+            print("Error: test_txt mode needs --test-txt and --jpeg-dir", file=sys.stderr)
             sys.exit(1)
-        image_items = get_image_list("val_txt", None, args.val_txt, args.jpeg_dir)
+        image_items = get_image_list("test_txt", None, args.test_txt, args.jpeg_dir)
 
     if not image_items:
         print("No images to process.", file=sys.stderr)
