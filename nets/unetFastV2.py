@@ -1,5 +1,5 @@
 """
-Unet FastV2（仅 MobileNetV3 骨干，便于 msfa_unet 包独立发布，无需 vgg/resnet/scconv）。
+MSFA_Unet
 """
 import torch
 import torch.nn as nn
@@ -78,8 +78,8 @@ class Unet(nn.Module):
             feat_channels = [16, 24, 576]
         else:
             raise ValueError(
-                "本包仅支持 backbone=mobilenetv3_large 或 mobilenetv3_small，"
-                "当前: `{}`".format(backbone)
+                "This package only supports `backbone=mobilenetv3_large` or `mobilenetv3_small`,"
+                "Current: `{}`".format(backbone)
             )
         out_filters = [64, 128, 256, 512]
         msa_dim_out = out_filters[0]

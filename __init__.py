@@ -1,1 +1,1 @@
-"""论文验证：语义分割推理（gen_seg_outputs）与区域生长评估（eval_region_grow）。"""
+"""Paper validation: Semantic segmentation inference (gen_seg_outputs) and region growth evaluation (eval_region_grow)."""

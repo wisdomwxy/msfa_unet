@@ -1,10 +1,10 @@
-"""验证用 UNet 推理默认配置。"""
+"""Config for val"""
 import os
 
 _PKG_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 权重：请将 88.64unetFastV2.pth 放在 weights/（见 weights/README.txt）
-DEFAULT_MODEL_PATH = os.path.join(_PKG_DIR, "weights", "88.64unetFastV2.pth")
+# Weights: Please place best.pth in the weights folder
+DEFAULT_MODEL_PATH = os.path.join(_PKG_DIR, "weights", "best.pth")
 DEFAULT_OUT_DIR = os.path.join(_PKG_DIR, "out")
 
 num_classes = 6
