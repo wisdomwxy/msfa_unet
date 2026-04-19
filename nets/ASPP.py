@@ -1,10 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-#-----------------------------------------#
-#   ASPP特征提取模块
-#   利用不同膨胀率的膨胀卷积进行特征提取
-#-----------------------------------------#
+
 class ASPP(nn.Module):
 	def __init__(self, dim_in, dim_out, rate=1, bn_mom=0.1):
 		super(ASPP, self).__init__()
@@ -40,16 +37,12 @@ class ASPP(nn.Module):
 
 	def forward(self, x):
 		[b, c, row, col] = x.size()
-        #-----------------------------------------#
-        #   一共五个分支
-        #-----------------------------------------#
+
 		conv1x1 = self.branch1(x)
 		conv3x3_1 = self.branch2(x)
 		conv3x3_2 = self.branch3(x)
 		conv3x3_3 = self.branch4(x)
-        #-----------------------------------------#
-        #   第五个分支，全局平均池化+卷积
-        #-----------------------------------------#
+
 		global_feature = torch.mean(x,2,True)
 		global_feature = torch.mean(global_feature,3,True)
 		global_feature = self.branch5_conv(global_feature)
@@ -57,10 +50,7 @@ class ASPP(nn.Module):
 		global_feature = self.branch5_relu(global_feature)
 		global_feature = F.interpolate(global_feature, (row, col), None, 'bilinear', True)
 		
-        #-----------------------------------------#
-        #   将五个分支的内容堆叠起来
-        #   然后1x1卷积整合特征。
-        #-----------------------------------------#
+
 		feature_cat = torch.cat([conv1x1, conv3x3_1, conv3x3_2, conv3x3_3, global_feature], dim=1)
 		result = self.conv_cat(feature_cat)
 		return result
@@ -88,7 +78,6 @@ class SPPFCSPC(nn.Module):
         return self.cv7(torch.cat((y1, y2), dim=1))
 
 class SPPCSPC(nn.Module):
-    # CSP https://github.com/WongKinYiu/CrossStagePartialNetworks
     def __init__(self, c1, c2, n=1, shortcut=False, g=1, e=0.5, k=(5, 9, 13)):
         super(SPPCSPC, self).__init__()
         c_ = int(2 * c2 * e)  # hidden channels
