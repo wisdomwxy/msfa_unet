@@ -30,7 +30,7 @@ def main():
         EvalConfig.VOCdevkit_path, "VOC2007/test.txt"
     )
     with open(test_txt, "r") as f:
-        test_lines = [line.strip() for line in f.readlines()]
+        val_lines = [line.strip() for line in f.readlines()]
 
     device = torch.device(
         "cuda" if torch.cuda.is_available() and EvalConfig.cuda else "cpu"
