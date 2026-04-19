@@ -204,6 +204,6 @@ out/eval_region_grow_results.xlsx
 
 ### Dataset and Model Weights
 
-[Download dataset and weights](https://pan.baidu.com/s/1PmnwNT5cAwuiUFggHfdsgA?pwd=htwi)
+[Download dataset and weights](https://pan.baidu.com/s/1CVguEKNr28mQ_zb6uRjUsA?pwd=dfmf)
 
 ---
