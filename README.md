@@ -60,7 +60,7 @@ Quantitative evaluation of the proposed method:
 
 ### 3. Visualization of traversable space.
 
-![Figure 7: Drivable space](./figures/fig7.png)
+![Figure 7: Drivable space](./figures/visual2.png)
 
 ---
 
